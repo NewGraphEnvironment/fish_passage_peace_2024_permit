@@ -5,7 +5,7 @@
 ##change your VErsion #
 #######################################################################################
 
-
+# build with knit
 
 ##move the html to the docs folder so it can be viewed online
 file.rename('application_moe.html', 'docs/index.html')
