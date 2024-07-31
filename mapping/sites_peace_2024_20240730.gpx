@@ -5,8 +5,20 @@
   <name>125231</name>
   <desc>bt_rearing_km</desc>
 </wpt>
+<wpt lat="54.755980215328577" lon="-122.462359989648888">
+  <name>125261</name>
+  <desc>bt_rearing_km</desc>
+</wpt>
 <wpt lat="54.485632167842525" lon="-121.803063353279299">
   <name>125000</name>
+  <desc>bt_rearing_km</desc>
+</wpt>
+<wpt lat="54.61806461839965" lon="-121.911202637053819">
+  <name>125179</name>
+  <desc>bt_rearing_km</desc>
+</wpt>
+<wpt lat="54.620060382339872" lon="-121.921106672801884">
+  <name>125180</name>
   <desc>bt_rearing_km</desc>
 </wpt>
 <wpt lat="54.95493755478924" lon="-122.989984554109469">
@@ -19,18 +31,6 @@
 </wpt>
 <wpt lat="54.681056269003264" lon="-122.81799768128576">
   <name>198692</name>
-  <desc>bt_rearing_km</desc>
-</wpt>
-<wpt lat="54.61806461839965" lon="-121.911202637053819">
-  <name>125179</name>
-  <desc>bt_rearing_km</desc>
-</wpt>
-<wpt lat="54.620060382339872" lon="-121.921106672801884">
-  <name>125180</name>
-  <desc>bt_rearing_km</desc>
-</wpt>
-<wpt lat="54.755980215328577" lon="-122.462359989648888">
-  <name>125261</name>
   <desc>bt_rearing_km</desc>
 </wpt>
 </gpx>
