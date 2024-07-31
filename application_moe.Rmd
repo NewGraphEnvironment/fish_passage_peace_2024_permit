@@ -50,8 +50,8 @@ options(scipen=999)
 options(knitr.kable.NA = '--') #'--'
 options(knitr.kable.NAN = '--')
 
-source('R/packages.R')
-# source('R/functions.R')
+source('scripts/packages.R')
+source('scripts/staticimports.R')
 
 name_project <- 'peace_2024'
 name_repo <- 'fish_passage_peace_2024_permit'
@@ -71,10 +71,13 @@ photo_width <- "80%"
 font_set <- 8
 ```
 
+
+
 This permit application can also be viewed online [at this link](`r knitr::asis_output(link_repo)`).  A summary of sites to be potentially assessed is included as Tables \@ref(tab:tab-sites1) - \@ref(tab:tab-sites3),  details of fish species potentially encountered is presented in  Table \@ref(tab:tab-fish) and an overview map displaying potential sample locations is included as Figure 1. A kml file of the sites is included as an attachment to the application and can also be downloaded [from here at this link](`r knitr::asis_output(link_kml)`).  Please note that there is an extensive amount of information contained in the kml file (accessed by clicking on sites) including brief summaries of background reporting data (when available).
 
 <br>
 
+## Brief description of project/activities {-}
 This work is a multi-year collaboration of many groups and an initiative of the Society for Ecosystem Restoration Northern BC. Funding for the project is through the Fish and Wildlife Compensation Program and the Provincial Fish Passage Technical Working Group.  Al Irvine, R.P.Bio from New Graph Environment Ltd. is leading the fieldwork with field and office collaboration with teams from McLeod Lake Indian Band. Past reports are below:
 
 - https://newgraphenvironment.github.io/Parsnip_Fish_Passage/
@@ -83,22 +86,49 @@ This work is a multi-year collaboration of many groups and an initiative of the 
 - https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/
 
 
-<br>
+## Rationale {-}
 
 Rationale for sampling is to inform fish presence/absence, species composition/density, abundance estimates,  movement, growth, and survival as part of habitat confirmations and effectiveness monitoring related to fish passage restoration at barrier culverts.  Habitat confirmation methodology information can be referenced in the above reports which builds on the [Fish Passage Technical Working Group Phase 2 protocol](https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/land-based-investment/investment-categories/fish-passage). Presence/absence of fish, species composition/abundance, distribution limits and fish movement can be useful for prioritizing which crossings are a best fit for fish passage restoration and inform follow up effectiveness monitoring.  
 
 <br>
 
+## Methodologies {-}
 Sampling is proposed at streams included in Tables \@ref(tab:tab-sites1) - \@ref(tab:tab-sites3) where we will be performing habitat confirmations and follow up site visits related to past habitat confirmations/fish passage remediations.  
 
 <br>
 
+
+
 Sampling methodologies will be dependent on the site, fish species suspected, type of habitat encountered, risks to aquatic organisms potentially present and ongoing communications.  Sampling methods may include minnowtrapping, electrofishing, and dipnetting upstream and downstream of current and past barrier culvert locations. 
+
+### PIT Tagging
+As part of this permit application we are proposing tagging.  Our study plan is (when time allows and PIT tagging is expected to increase our state of knowledge about the subject system) to electrofish small sites both upstream and downstream of priority culvert "barrier" sites and insert biomark APT12 PIT tags into the body cavity of select fish captured over 60mm.  Fish location (UTM), length and weight will also be collected.  In addition to providing information on abundance upstream and downstream of potential culvert restoration sites, the study will also provide information for monitoring programs to document fish movement, growth and survival at sites over multi-year timeframes. Main objectives are to determine
+
+1. if fish are moving into restored areas 
+2. if before any remediation is conducted - fish are moving through sites where stream crossing structures (culverts) likely cause connectivity issues  
+3. evaluate if productivity of the systems are increasing following bridge installation and/or if fish are moving upstream/downstream of where replaced/removed structures are located  
 
 <br>
 
-As part of this permit application we are proposing tagging.  Our study plan is (when time allows and PIT tagging is expected to increase our state of knowledge about the subject system) to electrofish small sites both upstream and downstream of priority culvert "barrier" sites and insert biomark APT12 PIT tags into the body cavity of select fish captured over 60mm.  Fish location (UTM), length and weight will also be collected.  In addition to providing information on abundance upstream and downstream of potential culvert restoration sites, the study will also provide baseline information for monitoring programs to document fish movement, growth and survival at these sites over multi-year timeframes (ie. to evaluate if 1. fish are moving into restored areas, 2. through sites where stream crossing structures (culverts) likely causing connectivity issues before any remediation is conducted and to 3.evaluate if productivity of the systems are increasing following bridge installation and/or if fish are moving upstream/downstream of where replaced/removed structures are located).  As we wish to tag all fish over 60mm in each site sampled we would like to apply for a permit allowing a maximum of 450fish with a maximum of 150 fish/stream.  Although we are requesting a maximum of 150 fish/stream, we have listed 150 fish of each species per stream because we will not know the species composition of the sites until the sampling occurs.
+As we wish to tag all fish over 60mm in each site sampled we would like to apply for a permit allowing a maximum of 600 fish with a maximum of 150 fish/stream.  Although we are requesting a maximum of 150 fish/stream, we have listed 150 fish of each species per stream because we will not know the species composition of the sites until the sampling occurs.
 
+<br>
+
+In general, species likely to be tagged include rainbow trout, bull trout and burbot. The numbers of fish per stream are likely to be much less than 150 however we are requesting the maximum number of fish to be tagged to allow for flexibility in the field. In 2023 the maximum number of fish tagged at one site was less than 100 with a total of 2 burbot tagged.
+
+## Risks associated with project/activities and associated mitigation {-}
+
+```{r}
+impacts_mitigation <- tribble(
+  ~Impact, ~Mitigation,
+  "High Voltage Injuries", "Use the minimum effective voltage",
+  "Disruption of Spawning", "Avoid electrofishing during highest risk periods in likely spawning habitat",
+  "Physical Stress on Fish", "Quick handling and release of captured fish",
+  "Injury from PIT Tagging Surgeries", "Shallow insertion and use fresh syringes every 10 surgeries"
+)
+
+fpr::fpr_kable(impacts_mitigation, caption_text = 'Risks and mitigation', scroll = FALSE)
+```
 
 <br>
 
@@ -115,7 +145,6 @@ Please do not hesitate to contact me if you need more information or have any qu
 Al Irvine, R.P.Bio 
 
 ```{r pull-db}
-
 conn <- fpr::fpr_db_conn()
 
 ##pull out what we need from the database
@@ -304,7 +333,6 @@ mymap <- ggmap::ggmap(mybasemap) +
 mymap
 ```
 
-
 <!-- `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>")` -->
 
 
@@ -401,7 +429,7 @@ tab_fish <- readr::read_csv(paste0(getwd(), '/fig/fiss_species_table.csv'))
 tab_fish |> 
   filter(Parsnip == 'Yes') |> 
   select(`Scientific Name`:`SARA`) |> 
-  fpr::fpr_kable(caption_text = 'Fish species recorded.', scroll = FALSE)
+  fpr::fpr_kable(caption_text = 'Fish species recorded within subject streams in the Fisheries Information Summary System.', scroll = FALSE)
 
 
 ```

@@ -11,7 +11,8 @@ pkgs_cran <- c(
   "ggmap",
   "bookdown",
   "here",
-  "zip"
+  "zip",
+  "leaflet"
   )
 
 pkgs_gh <- c("yutannihilation/ggsflabel",
